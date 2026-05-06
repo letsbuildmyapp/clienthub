@@ -28,10 +28,13 @@ export default function RootLayout({
             {children}
             <Toaster
               position="top-right"
+              closeButton
               toastOptions={{
                 classNames: {
                   toast:
-                    "border bg-card text-card-foreground shadow-lg",
+                    "group border bg-card text-card-foreground shadow-lg",
+                  closeButton:
+                    "!opacity-0 group-hover:!opacity-100 focus-visible:!opacity-100 transition-opacity",
                 },
               }}
             />
