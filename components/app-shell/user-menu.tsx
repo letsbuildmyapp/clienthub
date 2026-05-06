@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ChevronsUpDown, LogOut, RefreshCw, Settings, ShieldCheck, UserCircle } from "lucide-react";
+import { ChevronsUpDown, LogOut, RefreshCw, Settings, ShieldCheck } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,9 +54,6 @@ export function UserMenu() {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/settings"><UserCircle /> Profile</Link>
-        </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href="/settings"><Settings /> Settings</Link>
         </DropdownMenuItem>

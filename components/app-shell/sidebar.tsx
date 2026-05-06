@@ -121,7 +121,7 @@ export function Sidebar({
 
       {!isAdminContext && !collapsed && (
         <div className="px-3 pb-3">
-          <TeamSwitcher />
+          <TeamSwitcher onAfterSelect={onMobileClose} />
         </div>
       )}
 

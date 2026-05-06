@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, ChevronsUpDown, Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth/context";
 import {
   Popover,
@@ -13,8 +14,9 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { planById } from "@/lib/plans";
 
-export function TeamSwitcher() {
+export function TeamSwitcher({ onAfterSelect }: { onAfterSelect?: () => void }) {
   const { activeTeam, teams } = useAuth();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   if (!activeTeam) return null;
@@ -45,6 +47,13 @@ export function TeamSwitcher() {
               onClick={() => {
                 setActiveTeam(t.id);
                 setOpen(false);
+                const isMobile =
+                  typeof window !== "undefined" &&
+                  window.matchMedia("(max-width: 767px)").matches;
+                if (isMobile) {
+                  onAfterSelect?.();
+                  router.push("/dashboard");
+                }
               }}
               className={cn(
                 "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
