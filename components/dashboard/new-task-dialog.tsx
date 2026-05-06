@@ -128,7 +128,7 @@ export function NewTaskDialog({
               rows={3}
             />
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 [&>*]:min-w-0">
             <div className="space-y-1.5">
               <Label htmlFor="t-assignee">Assignee</Label>
               <Select value={assigneeId} onValueChange={setAssigneeId}>
@@ -160,6 +160,7 @@ export function NewTaskDialog({
               <Input
                 id="t-due"
                 type="date"
+                className="min-w-0"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
               />
