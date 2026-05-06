@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login, loginAs } from "@/lib/data/api";
 import { Card } from "@/components/ui/card";
+import { useDb } from "@/lib/data/hooks";
 
 const DEMO_LOGINS = [
   {
@@ -38,10 +39,18 @@ const DEMO_LOGINS = [
 
 export default function LoginPage() {
   const router = useRouter();
+  const db = useDb();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [demoLoading, setDemoLoading] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (db.session.userId) {
+      const u = db.users[db.session.userId];
+      router.replace(u?.role === "admin" ? "/admin" : "/dashboard");
+    }
+  }, [db.session.userId, db.users, router]);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();

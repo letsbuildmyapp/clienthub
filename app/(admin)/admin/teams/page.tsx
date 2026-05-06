@@ -65,14 +65,14 @@ export default function AdminTeamsPage() {
       <Card>
         <CardContent className="p-4">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <div className="relative w-full sm:max-w-xs">
+            <div className="relative min-w-0 flex-1 sm:max-w-xs">
               <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
               <Input placeholder="Search teams…" value={query} onChange={(e) => setQuery(e.target.value)} className="pl-9" />
             </div>
-            <div className="text-xs text-muted-foreground">{filtered.length} of {teams.length}</div>
+            <div className="shrink-0 whitespace-nowrap text-xs text-muted-foreground">{filtered.length} of {teams.length}</div>
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-border">
+          <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full text-sm">
               <thead className="bg-muted/40 text-xs uppercase tracking-wider text-muted-foreground">
                 <tr>
@@ -82,7 +82,7 @@ export default function AdminTeamsPage() {
                   <SortHeader label="Members" k="members" cur={sort} dir={dir} onClick={toggleSort} className="text-right hidden sm:table-cell" />
                   <SortHeader label="Created" k="created" cur={sort} dir={dir} onClick={toggleSort} className="hidden md:table-cell" />
                   <th className="px-3 py-2 text-left font-medium">Status</th>
-                  <th className="px-3 py-2"></th>
+                  <th className="hidden px-3 py-2 sm:table-cell"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -112,7 +112,7 @@ export default function AdminTeamsPage() {
                           <Badge variant="success">Active</Badge>
                         )}
                       </td>
-                      <td className="px-3 py-2.5 text-right">
+                      <td className="hidden px-3 py-2.5 text-right sm:table-cell">
                         <div className="flex items-center justify-end gap-2">
                           <Switch
                             checked={!t.suspended}

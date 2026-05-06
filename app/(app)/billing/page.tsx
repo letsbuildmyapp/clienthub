@@ -142,16 +142,16 @@ export default function BillingPage() {
           <CardDescription>Click any invoice to view a printable receipt.</CardDescription>
         </CardHeader>
         <CardContent className="px-0">
-          <div className="overflow-hidden">
+          <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-muted/40 text-xs uppercase tracking-wider text-muted-foreground">
                 <tr>
-                  <th className="px-6 py-2 text-left font-medium">Invoice</th>
-                  <th className="px-6 py-2 text-left font-medium">Period</th>
-                  <th className="hidden px-6 py-2 text-left font-medium sm:table-cell">Plan</th>
-                  <th className="px-6 py-2 text-right font-medium">Amount</th>
-                  <th className="px-6 py-2 text-left font-medium">Status</th>
-                  <th className="px-6 py-2"></th>
+                  <th className="px-3 py-2 sm:px-6 text-left font-medium">Invoice</th>
+                  <th className="px-3 py-2 sm:px-6 text-left font-medium">Period</th>
+                  <th className="hidden px-3 py-2 sm:px-6 text-left font-medium sm:table-cell">Plan</th>
+                  <th className="px-3 py-2 sm:px-6 text-right font-medium">Amount</th>
+                  <th className="px-3 py-2 sm:px-6 text-left font-medium">Status</th>
+                  <th className="px-3 py-2 sm:px-6"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -365,11 +365,11 @@ function InvoiceRow({ invoice }: { invoice: Invoice }) {
   const period = new Date(invoice.periodStart).toLocaleDateString("en-US", { month: "long", year: "numeric" });
   return (
     <tr className="hover:bg-accent/30">
-      <td className="px-6 py-3 font-mono text-xs">{invoice.number}</td>
-      <td className="px-6 py-3 text-sm">{period}</td>
-      <td className="hidden px-6 py-3 text-sm capitalize sm:table-cell">{planById(invoice.plan).name}</td>
-      <td className="px-6 py-3 text-right font-medium tabular-nums">{formatCurrency(invoice.amountCents)}</td>
-      <td className="px-6 py-3">
+      <td className="px-3 py-3 sm:px-6 font-mono text-xs">{invoice.number}</td>
+      <td className="px-3 py-3 sm:px-6 text-sm">{period}</td>
+      <td className="hidden px-3 py-3 sm:px-6 text-sm capitalize sm:table-cell">{planById(invoice.plan).name}</td>
+      <td className="px-3 py-3 sm:px-6 text-right font-medium tabular-nums">{formatCurrency(invoice.amountCents)}</td>
+      <td className="px-3 py-3 sm:px-6">
         <Badge
           variant={invoice.status === "paid" ? "success" : invoice.status === "open" ? "warning" : "secondary"}
           className="capitalize"
@@ -377,7 +377,7 @@ function InvoiceRow({ invoice }: { invoice: Invoice }) {
           {invoice.status}
         </Badge>
       </td>
-      <td className="px-6 py-3 text-right">
+      <td className="px-3 py-3 sm:px-6 text-right">
         <div className="flex items-center justify-end gap-1">
           {invoice.status === "open" && (
             <Button

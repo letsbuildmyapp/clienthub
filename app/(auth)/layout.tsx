@@ -22,7 +22,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <span className="tracking-tight">ClientHub</span>
         </Link>
         <span className="text-xs text-muted-foreground">
-          Need help? <Link href="#" className="text-foreground underline-offset-4 hover:underline">Contact support</Link>
+          Need help?{" "}
+          <a
+            href="mailto:hello@letsbuildmyapp.com?subject=ClientHub%20support"
+            className="text-foreground underline-offset-4 hover:underline"
+          >
+            Contact support
+          </a>
         </span>
       </header>
 
@@ -31,7 +37,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </main>
 
       <footer className="relative z-10 px-6 pb-8 text-center text-xs text-muted-foreground sm:px-10">
-        A portfolio demo by{" "}
         <a
           href="https://letsbuildmyapp.com"
           target="_blank"
@@ -40,7 +45,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         >
           Let&apos;s Build My App
         </a>
-        . No real data is stored — runs entirely on a local mock.
       </footer>
     </div>
   );
